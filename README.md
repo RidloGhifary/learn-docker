@@ -216,3 +216,28 @@ docker container logs -f redisExample
 ```
 
 ## Container exec
+
+- When we created a container, application within a container only can be access inside the container, because of that we need to come in to the container it self, to enter on a container we could do that with `container exec` feature where it used to execute program code inside that container.
+
+## Enter the container
+
+- we could do execute `bash script code` because most of application docker image is made from linux and we just by typing:
+
+```dockerfile
+docker container exec -i -t containerId/containerName /bin/bash
+
+#example
+
+docker container exec -i -t redisExample /bin/bash
+```
+
+- `-i` is a interactive argument, like keeping the input active to interact with `bash script code`
+- `-t` is a argument for pseudo-TTY(`terminal access`) allocation means that we want to come in to container with a terminal access
+- `/bin/bash` is an example of program code that usually on a container because most of application docker image is made from linux or unix
+- Afterwords we could command anything to `/bin/bash`
+
+![alt text](<Docker Dasar.pptx-1.png>)
+
+- type `exit` to escape from container.
+
+## Container port
