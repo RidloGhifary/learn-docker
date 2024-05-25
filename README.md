@@ -9,10 +9,10 @@
 ## Docker architecture
 
 - Docker using Client-Server architecture
-- Docker client berkomunikasi dengan Docker daemon (server)
-- Saat kita menginstall Docker, biasanya didalamnya sudah terdapat Docker Client dan Docker Daemon
-- Docker Client dan Docker Daemon bisa berjalan di satu sistem yang sama
-- Docker Client dan Docker Daemon berkomunikasi menggunakan REST API
+- Docker client communicate with docker server
+- When we installed docker, normally there will be docker client and docker server
+- Docker Client and Docker Daemon could possibly running on the same system
+- Docker Client and Docker Daemon communicate using REST API
 
 ![alt text](image.png)
 
@@ -158,7 +158,8 @@ docker container start redisExample
 ```
 
 - Afterwords if you command `docker container ls` you'll see the list of your container is running with a `up` status and `ports` number which mean that the container is running.
-- One container to another is isolated, because of that even they have the same port or one of them is conflict, another container wont be affected.
+
+> One container to another is isolated, because of that even they have the same port or one of them is conflict, another container wont be affected.
 
 ## Stop container
 
@@ -173,3 +174,45 @@ docker container stop redisExample
 ```
 
 - Command `docker container ls -a` and you'll see the status of container you just stopped is `exited` means that the container is no longer running.
+
+## Delete container
+
+- If a container is no longer running that`s a time you could delete a container by just typing:
+
+```dockerfile
+docker container containerId/containerName
+
+#example
+
+docker container rm redisExample
+```
+
+- When you successfully deleted the container, you'll not see `redisExample` anymore
+
+## Container log
+
+- Sometimes when a problem occurred on a application within the container, We wanna see the detail of the log application or what error we got, so we could easily find the problem and then debug and solve it.
+
+![alt text](image-6.png)
+
+- To see the log application the your container, you could just type:
+
+```dockerfile
+docker container logs containerId/containerName
+
+#example
+
+docker container logs redisExample
+```
+
+- Or you wanna see realtime log which mean if a new log comes in it will show directly, do by just typing:
+
+```dockerfile
+docker container logs -f containerId/containerName
+
+#example
+
+docker container logs -f redisExample
+```
+
+## Container exec
